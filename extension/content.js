@@ -12,7 +12,7 @@
     <textarea class="traxy-panel-prompt" placeholder="What would you like help writing?" aria-label="Instructions"></textarea>
     <label class="traxy-panel-track-label" for="traxy-word-tracks">Word tracks (select any that apply)</label>
     <select class="traxy-panel-track" id="traxy-word-tracks" aria-label="Word tracks (select any that apply)" multiple size="4"></select>
-    <button class="traxy-panel-submit" type="button">Continue in Traxy</button>
+    <button class="traxy-panel-submit" type="button">Generate with Traxy</button>
     <div class="traxy-panel-tags" aria-label="Available tags"></div>
     <p class="traxy-panel-help">Selected text or the field’s recent text is included as context. Choose specific tracks and tags if useful.</p>
     <p class="traxy-panel-status" role="status" aria-live="polite"></p>`;
@@ -66,8 +66,8 @@
       document.body.append(mirror);
       const markerRect = marker.getBoundingClientRect();
       mirror.remove();
-      const top = rect.top + markerRect.top - field.scrollTop;
-      const left = rect.left + markerRect.left - field.scrollLeft;
+      const top = markerRect.top - field.scrollTop;
+      const left = markerRect.left - field.scrollLeft;
       return { left: Math.min(innerWidth - 12, Math.max(12, left)), top, bottom: top + Math.max(18, parseFloat(style.lineHeight) || 18) };
     }
     const selection = getSelection();

@@ -1,5 +1,6 @@
 const SUPABASE_URL = 'https://vkzdifzdripyloijoxmt.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_jMR4S2AsDNOYYd55bTspPw_Kq2b3Oo4';
+const DEFAULT_TRAXY_APP_URL = 'https://mcloonea.github.io/traxy';
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === 'ensure-content') {
@@ -52,6 +53,10 @@ async function ensureContent(tabId) {
 }
 
 async function openTraxy(appUrl, draft) {
+  if (!appUrl) {
+    const saved = await chrome.storage.local.get('traxy_app_url');
+    appUrl = saved.traxy_app_url || DEFAULT_TRAXY_APP_URL;
+  }
   let base;
   try { base = new URL(appUrl); } catch { throw new Error('Set your Traxy app URL in the extension popup first.'); }
   const local = ['localhost', '127.0.0.1'].includes(base.hostname);

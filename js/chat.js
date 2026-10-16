@@ -308,7 +308,6 @@ import { supabase, CHAT_FUNCTION_NAME } from './supabase.js';
     input.setSelectionRange(input.value.length, input.value.length);
   }
 
-  chromeExtensionDraft();
   function chromeExtensionDraft() {
     const handoff = new URLSearchParams(location.hash.slice(1));
     const draft = handoff.get('draft');
