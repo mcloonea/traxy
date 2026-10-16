@@ -6,6 +6,7 @@
   <title>Home | Traxy</title>
   <link rel="stylesheet" href="../design/style.css">
   <script src="../js/sidebar.js" defer></script>
+  <script type="module" src="../js/home.js"></script>
 </head>
 <body data-page="home">
   <div class="app">
@@ -13,6 +14,33 @@
     <aside id="sidebar"></aside>
     <main class="content">
       <div class="page-content-shell">
+        <section class="usage-dashboard" aria-labelledby="usage-title">
+          <div class="usage-heading">
+            <div>
+              <span class="home-eyebrow">Your activity</span>
+              <h2 id="usage-title">Usage by person</h2>
+              <p id="usage-person">Loading your usage…</p>
+            </div>
+            <label class="usage-period-label" for="usage-period">Period
+              <select id="usage-period">
+                <option value="7">Last 7 days</option>
+                <option value="30" selected>Last 30 days</option>
+                <option value="90">Last 90 days</option>
+              </select>
+            </label>
+          </div>
+          <p class="usage-status" id="usage-status" role="status" aria-live="polite"></p>
+          <div class="usage-metrics" id="usage-metrics" hidden>
+            <article class="usage-metric"><span>AI responses</span><strong id="usage-responses">0</strong><small>Generations in this period</small></article>
+            <article class="usage-metric"><span>Total tokens</span><strong id="usage-total-tokens">0</strong><small>Input and output combined</small></article>
+            <article class="usage-metric"><span>Input tokens</span><strong id="usage-input-tokens">0</strong><small>Context sent to the AI</small></article>
+            <article class="usage-metric"><span>Output tokens</span><strong id="usage-output-tokens">0</strong><small>AI response tokens</small></article>
+          </div>
+          <div class="usage-trend-card" id="usage-trend-card" hidden>
+            <div class="usage-trend-heading"><h3>Daily activity</h3><span>AI responses</span></div>
+            <div class="usage-trend" id="usage-trend" role="img" aria-label="Daily AI response activity"></div>
+          </div>
+        </section>
         <section class="home-hero" aria-labelledby="home-title">
           <span class="home-eyebrow">Your sales reply workspace</span>
           <h2 id="home-title">Find the right words, faster.</h2>
