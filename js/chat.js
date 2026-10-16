@@ -238,7 +238,21 @@ import { supabase, CHAT_FUNCTION_NAME } from './supabase.js';
           assistant.content = response_options.map((item, itemIndex) => `${itemIndex + 1}. ${item.text}`).join('\n\n');
           scheduleMessageEditSave(assistant);
         });
-        card.append(header, description, text);
+        card.append(header, description);
+        if (option.source?.tags?.length) {
+          const tags = document.createElement('div');
+          tags.className = 'response-source-tags';
+          tags.setAttribute('role', 'group');
+          tags.setAttribute('aria-label', 'Tags on the selected word track');
+          for (const tagName of option.source.tags) {
+            const tag = document.createElement('span');
+            tag.className = 'response-source-tag';
+            tag.textContent = `#${tagName}`;
+            tags.append(tag);
+          }
+          card.append(tags);
+        }
+        card.append(text);
         grid.append(card);
       });
       row.append(grid);
@@ -378,10 +392,23 @@ import { supabase, CHAT_FUNCTION_NAME } from './supabase.js';
       option.dataset.type = item.type;
       option.setAttribute('role', 'option');
       option.setAttribute('aria-selected', 'false');
-      const label = document.createElement('span');
-      label.textContent = item.type === 'tag' ? `#${item.value}` : item.value;
-      option.append(label);
-      if (item.type === 'title') {
+      if (item.type === 'tag') {
+        option.setAttribute('aria-label', `Insert tag ${item.value}`);
+        const mark = document.createElement('span');
+        mark.className = 'chat-tag-mark';
+        mark.setAttribute('aria-hidden', 'true');
+        mark.textContent = '#';
+        const label = document.createElement('span');
+        label.className = 'chat-tag-name';
+        label.textContent = item.value;
+        const action = document.createElement('span');
+        action.className = 'chat-suggestion-action';
+        action.textContent = 'Insert';
+        option.append(mark, label, action);
+      } else {
+        const label = document.createElement('span');
+        label.textContent = item.value;
+        option.append(label);
         const preview = document.createElement('span');
         preview.className = 'chat-suggestion-preview';
         preview.textContent = item.preview;
