@@ -40,6 +40,36 @@
             <div class="usage-trend-heading"><h3>Daily activity</h3><span>AI responses</span></div>
             <div class="usage-trend" id="usage-trend" role="img" aria-label="Daily AI response activity"></div>
           </div>
+          <div class="usage-breakdowns" id="usage-breakdowns" hidden>
+            <section class="usage-breakdown-card" aria-labelledby="usage-dates-title">
+              <div class="usage-trend-heading"><h3 id="usage-dates-title">By date</h3><span>Local dates</span></div>
+              <div class="usage-table-wrap">
+                <table class="usage-table">
+                  <thead><tr><th scope="col">Date</th><th scope="col">Responses</th><th scope="col">Input tokens</th><th scope="col">Output tokens</th></tr></thead>
+                  <tbody id="usage-daily-rows"></tbody>
+                </table>
+              </div>
+            </section>
+            <section class="usage-breakdown-card" aria-labelledby="usage-models-title">
+              <div class="usage-trend-heading"><h3 id="usage-models-title">By model</h3><span>Selected period</span></div>
+              <div class="usage-table-wrap">
+                <table class="usage-table">
+                  <thead><tr><th scope="col">Model</th><th scope="col">Responses</th><th scope="col">Total tokens</th></tr></thead>
+                  <tbody id="usage-model-rows"></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+        <section class="onboarding-card" id="onboarding-card" aria-labelledby="onboarding-title" hidden>
+          <div class="onboarding-heading">
+            <div><span class="home-eyebrow">Quick setup</span><h2 id="onboarding-title">Make Traxy yours</h2><p id="onboarding-progress">Loading your setup…</p></div>
+          </div>
+          <ol class="onboarding-steps">
+            <li id="onboarding-profile"><span class="onboarding-step-check" aria-hidden="true"></span><span><strong>Set your name</strong><small>Personalize your workspace.</small></span><a href="profile.html">Set up profile <span aria-hidden="true">→</span></a></li>
+            <li id="onboarding-tracks"><span class="onboarding-step-check" aria-hidden="true"></span><span><strong>Add three word tracks</strong><small>Give Traxy replies that sound like you.</small></span><a href="library.html">Add tracks <span aria-hidden="true">→</span></a></li>
+            <li id="onboarding-reply"><span class="onboarding-step-check" aria-hidden="true"></span><span><strong>Try your first reply</strong><small>Ask a question or paste a customer conversation.</small></span><a href="chat.html">Open chat <span aria-hidden="true">→</span></a></li>
+          </ol>
         </section>
         <section class="home-hero" aria-labelledby="home-title">
           <span class="home-eyebrow">Your sales reply workspace</span>
