@@ -3,7 +3,7 @@
   "name": "Traxy",
   "version": "1.0.0",
   "description": "Use your Traxy word tracks and tags anywhere you write.",
-  "permissions": ["storage", "tabs", "scripting"],
+  "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["https://vkzdifzdripyloijoxmt.supabase.co/*"],
   "optional_host_permissions": ["http://*/*", "https://*/*"],
   "action": {
