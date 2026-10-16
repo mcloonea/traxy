@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Traxy",
+  "version": "1.0.0",
+  "description": "Use your Traxy word tracks and tags anywhere you write.",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": ["https://vkzdifzdripyloijoxmt.supabase.co/*"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "action": {
+    "default_title": "Traxy",
+    "default_popup": "popup.html"
+  },
+  "background": { "service_worker": "background.js" }
+}

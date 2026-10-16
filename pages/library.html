@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library | Traxy</title>
+  <link rel="stylesheet" href="../design/style.css">
+  <script src="../js/sidebar.js" defer></script>
+  <script type="module" src="../js/library.js"></script>
+</head>
+<body data-page="library">
+  <div class="app">
+    <header class="app-topbar library-topbar">
+      <h1>Library</h1>
+      <label class="library-search">
+        <span class="visually-hidden">Search word tracks</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg>
+        <input id="track-search" type="search" placeholder="Search tracks">
+      </label>
+      <label class="library-filter-label">
+        <span class="visually-hidden">Filter tracks by tag</span>
+        <select id="tag-filter"><option value="">All tags</option></select>
+      </label>
+      <button class="library-new-button" id="new-track-button" type="button"><span aria-hidden="true">+</span> New Track</button>
+    </header>
+    <aside id="sidebar"></aside>
+    <main class="library-page">
+      <div class="library-content">
+        <p class="library-status" id="library-status" role="status" aria-live="polite">Loading tracks…</p>
+        <section class="track-grid" id="track-grid" aria-label="Saved word tracks"></section>
+        <section class="library-empty" id="library-empty" aria-label="No saved word tracks" hidden>
+          <div class="library-empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 4.75A1.75 1.75 0 0 1 6.75 3H20v15H6.75A1.75 1.75 0 0 0 5 19.75z"/><path d="M5 5v14.75A1.25 1.25 0 0 0 6.25 21H20M9 7h7M9 10h7"/></svg>
+          </div>
+          <h2 id="empty-title">No tracks yet</h2>
+          <p id="empty-copy">Create a track to get started.</p>
+        </section>
+
+        <dialog class="track-dialog" id="track-dialog" aria-labelledby="track-dialog-title">
+          <form id="track-form">
+            <div class="track-dialog-heading">
+              <h2 id="track-dialog-title">New track</h2>
+              <button class="track-dialog-close" id="close-track-dialog" type="button" aria-label="Close">×</button>
+            </div>
+            <label class="track-form-field">Title<input id="track-title" name="title" maxlength="120" required></label>
+            <label class="track-form-field">Track<textarea id="track-content" name="content" rows="6" maxlength="10000" required></textarea></label>
+            <fieldset class="track-tag-fieldset">
+              <legend>Tags</legend>
+              <div class="track-tag-options" id="track-tag-options"></div>
+              <a href="tags.html">Manage tags</a>
+            </fieldset>
+            <p class="track-form-message" id="track-form-message" role="status" aria-live="polite"></p>
+            <div class="track-dialog-actions">
+              <button class="track-cancel-button" id="cancel-track" type="button">Cancel</button>
+              <button class="library-new-button" id="save-track" type="submit">Save Track</button>
+            </div>
+          </form>
+        </dialog>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traxy extension</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="popup">
+    <header><span class="mark">✦</span><strong>Traxy</strong></header>
+    <p id="site-name">Checking this site…</p>
+    <label class="switch-row" for="site-enabled">
+      <span><strong>Enable on this site</strong><small>Type // in a text field to open Traxy.</small></span>
+      <input id="site-enabled" type="checkbox" disabled>
+    </label>
+    <p id="status" role="status"></p>
+    <section class="account" aria-label="Traxy account">
+      <p id="account-status">Not connected</p>
+      <form id="signin-form">
+        <label for="email">Traxy email</label>
+        <input id="email" type="email" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <button type="submit" id="signin-button">Connect account</button>
+      </form>
+      <button id="signout-button" type="button" hidden>Disconnect account</button>
+    </section>
+    <label class="app-url-label" for="app-url">Traxy app URL</label>
+    <div class="app-url-row"><input id="app-url" type="url" placeholder="https://mcloonea.github.io/traxy" autocomplete="url"><button id="save-app-url" type="button">Save</button></div>
+    <p id="app-url-status" role="status"></p>
+    <button id="open-traxy" type="button" disabled>Open Traxy</button>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

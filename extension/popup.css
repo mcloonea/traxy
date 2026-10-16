@@ -1,0 +1,26 @@
+* { box-sizing: border-box; }
+body { width: 300px; margin: 0; background: #f8f8fb; color: #20212a; font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.popup { padding: 18px; }
+header { display: flex; align-items: center; gap: 9px; font-size: 17px; }
+.mark { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 9px; background: #eee9ff; color: #6741d9; }
+#site-name { margin: 18px 0 10px; overflow: hidden; color: #666876; text-overflow: ellipsis; white-space: nowrap; }
+.switch-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; border: 1px solid #e3e3eb; border-radius: 10px; background: white; cursor: pointer; }
+.switch-row strong, .switch-row small { display: block; }
+.switch-row strong { font-size: 13px; }
+.switch-row small { margin-top: 3px; color: #777987; font-size: 11px; }
+input { width: 18px; height: 18px; accent-color: #6741d9; }
+#status { min-height: 16px; margin: 8px 0; color: #777987; font-size: 11px; }
+#status[data-error="true"] { color: #ba3434; }
+button { width: 100%; height: 36px; border: 0; border-radius: 8px; background: #6741d9; color: white; font: inherit; font-weight: 600; cursor: pointer; }
+button:hover { background: #5432ba; }
+button:disabled { opacity: .5; cursor: default; }
+.account { margin: 13px 0 0; padding: 12px; border: 1px solid #e3e3eb; border-radius: 10px; background: #fff; }
+#account-status { margin: 0 0 9px; color: #666876; font-size: 12px; }
+#signin-form label, .app-url-label { display: block; margin: 8px 0 4px; color: #555765; font-size: 11px; font-weight: 600; }
+#signin-form input, #app-url { width: 100%; height: 34px; padding: 0 9px; border: 1px solid #dedce6; border-radius: 7px; background: #fff; color: #20212a; font: inherit; font-size: 12px; }
+#signin-form button, #signout-button { margin-top: 10px; }
+.app-url-label { margin-top: 12px; }
+.app-url-row { display: flex; gap: 6px; }
+.app-url-row button { flex: 0 0 54px; width: 54px; height: 34px; font-size: 11px; }
+#app-url-status { min-height: 14px; margin: 4px 0; color: #777987; font-size: 10px; }
+#open-traxy { margin-top: 8px; }

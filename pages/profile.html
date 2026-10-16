@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | Traxy</title>
+  <link rel="stylesheet" href="../design/style.css">
+  <script src="../js/sidebar.js" defer></script>
+  <script type="module" src="../js/profile.js"></script>
+</head>
+<body data-page="profile">
+  <div class="app">
+    <header class="app-topbar"><h1>Settings</h1></header>
+    <aside id="sidebar"></aside>
+    <main class="profile-page">
+      <section class="profile-card" aria-labelledby="profile-title">
+        <h2 id="profile-title">Profile</h2>
+        <p class="profile-message" id="profile-message" role="status" aria-live="polite"></p>
+        <div class="profile-field">
+          <label for="profile-username">Username</label>
+          <input id="profile-username" type="text" autocomplete="nickname" maxlength="80" disabled>
+        </div>
+        <div class="profile-field">
+          <label for="profile-email">Email</label>
+          <input id="profile-email" type="email" autocomplete="email" disabled>
+        </div>
+        <div class="profile-field">
+          <label for="profile-global-prompt">Global prompt</label>
+          <p class="field-help" id="global-prompt-help">Your tone, dealership details, and instructions for every response. Changes save automatically.</p>
+          <textarea id="profile-global-prompt" rows="5" maxlength="8000" aria-describedby="global-prompt-help" placeholder="Keep replies warm and concise. Ask one clear question at a time…" disabled></textarea>
+        </div>
+        <button class="profile-signout" id="sign-out" type="button">Sign out</button>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

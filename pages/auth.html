@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in | Traxy</title>
+  <link rel="stylesheet" href="../design/style.css">
+  <script type="module" src="../js/auth.js"></script>
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <a class="auth-brand" href="home.html" aria-label="Traxy home">Traxy<span>.</span></a>
+
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-mark" aria-hidden="true">✦</div>
+      <h1 id="auth-title">Welcome back</h1>
+      <p class="auth-subtitle" id="auth-subtitle">Sign in to your account.</p>
+
+      <form class="auth-form" id="auth-form">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+
+        <div class="password-label">
+          <label for="password">Password</label>
+          <a href="#" id="forgot-password">Forgot password?</a>
+        </div>
+        <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+
+        <div class="name-field" id="name-field" hidden>
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" placeholder="What should we call you?" autocomplete="name">
+        </div>
+
+        <button class="auth-submit" type="submit" id="auth-submit" data-mode="signin">Sign in <span aria-hidden="true">→</span></button>
+        <p class="auth-message" id="auth-message" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="auth-switch" id="auth-switch">New to Traxy? <button type="button" id="mode-toggle">Create an account</button></p>
+    </section>
+
+  </main>
+</body>
+</html>

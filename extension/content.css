@@ -1,0 +1,31 @@
+#traxy-extension-panel {
+  position: fixed;
+  z-index: 2147483647;
+  width: 340px;
+  max-width: calc(100vw - 24px);
+  max-height: 360px;
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid #e1deeb;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 12px 38px rgb(25 20 45 / 20%);
+  color: #24232b;
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+#traxy-extension-panel[hidden] { display: none; }
+#traxy-extension-panel * { box-sizing: border-box; }
+.traxy-panel-head { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+.traxy-panel-mark { color: #6741d9; font-size: 17px; }
+.traxy-panel-title { flex: 1; font-size: 14px; font-weight: 700; }
+.traxy-panel-close { border: 0; background: transparent; color: #777; font-size: 20px; cursor: pointer; }
+.traxy-panel-prompt { width: 100%; min-height: 62px; resize: vertical; padding: 9px; border: 1px solid #dedce6; border-radius: 8px; font: inherit; }
+.traxy-panel-track-label { display: block; margin-top: 9px; color: #555765; font-size: 11px; font-weight: 600; }
+.traxy-panel-track { display: block; width: 100%; height: 78px; margin-top: 4px; padding: 5px 8px; border: 1px solid #dedce6; border-radius: 7px; background: #fff; font: inherit; }
+.traxy-panel-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.traxy-panel-tag { padding: 3px 7px; border: 1px solid transparent; border-radius: 99px; background: #f0ecff; color: #5633c3; font: inherit; font-size: 11px; cursor: pointer; }
+.traxy-panel-tag[aria-pressed="true"] { border-color: #6741d9; background: #e2d9ff; }
+.traxy-panel-help, .traxy-panel-status { margin: 8px 0 0; color: #777; font-size: 11px; }
+.traxy-panel-status[data-error="true"] { color: #ba3434; }
+.traxy-panel-submit { width: 100%; height: 36px; margin-top: 10px; border: 0; border-radius: 8px; background: #6741d9; color: #fff; font: inherit; font-weight: 650; cursor: pointer; }
+.traxy-panel-submit:disabled { opacity: .55; cursor: wait; }
