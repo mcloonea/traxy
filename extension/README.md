@@ -10,4 +10,4 @@
 
 The extension asks for site access only after you enable it for that site. It uses the signed-in account to read your private word tracks and tags. Your Supabase session is stored in Chrome extension storage and handed to the Traxy page through the URL fragment; the chat page removes that fragment immediately after reading it.
 
-The project is a static site. GitHub Pages publishes the repository through `.github/workflows/pages.yml`.
+The project is a static site. GitHub Pages publishes the root of the `main` branch.
