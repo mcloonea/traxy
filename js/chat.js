@@ -212,7 +212,7 @@ import { supabase, CHAT_FUNCTION_NAME } from './supabase.js';
         match.textContent = ({ exact: 'Exact match', adapted: 'Adapted', new: 'Original' })[option.match_type] || 'Response';
         const copy = document.createElement('button');
         copy.type = 'button';
-        copy.className = 'response-copy';
+        copy.className = 'response-action';
         copy.textContent = 'Copy';
         copy.addEventListener('click', async () => {
           try {
@@ -232,9 +232,56 @@ import { supabase, CHAT_FUNCTION_NAME } from './supabase.js';
         text.setAttribute('aria-label', `Edit response: ${heading.textContent}`);
         text.value = option.text;
         text.rows = Math.max(3, Math.min(9, option.text.split('\n').length + 1));
+        const actions = document.createElement('div');
+        actions.className = 'response-actions';
+        const save = document.createElement('button');
+        save.type = 'button';
+        save.className = 'response-action response-save';
+        save.textContent = 'Save';
+        save.hidden = true;
+        const tagButton = document.createElement('button');
+        tagButton.type = 'button';
+        tagButton.className = 'response-action';
+        tagButton.textContent = 'Tag';
+        tagButton.hidden = true;
+        const tagChoices = document.createElement('div');
+        tagChoices.className = 'response-tag-choices';
+        tagChoices.hidden = true;
+        for (const tag of chatTags) {
+          const label = document.createElement('label');
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.value = tag.id;
+          label.append(checkbox, document.createTextNode(tag.name));
+          tagChoices.append(label);
+        }
+        tagButton.addEventListener('click', () => { tagChoices.hidden = !tagChoices.hidden; });
+        save.addEventListener('click', async () => {
+          save.disabled = true;
+          save.textContent = 'Saving…';
+          const { data, error } = await supabase.from('word_tracks').insert({
+            title: (option.title || 'Saved response').slice(0, 120), content: text.value.trim()
+          }).select('id').single();
+          if (!error && data && tagChoices.querySelector('input:checked')) {
+            const links = [...tagChoices.querySelectorAll('input:checked')].map(box => ({ track_id: data.id, tag_id: box.value }));
+            const result = await supabase.from('word_track_tags').insert(links);
+            if (result.error) setComposerStatus('Response saved, but tags could not be added.', true);
+          }
+          if (error) {
+            setComposerStatus('Could not save this response.', true);
+            save.disabled = false;
+            save.textContent = 'Save';
+          } else {
+            save.textContent = 'Saved';
+            tagButton.disabled = true;
+          }
+        });
+        actions.append(save, tagButton);
         text.addEventListener('input', () => {
           option.text = text.value;
           text.rows = Math.max(3, Math.min(9, text.value.split('\n').length + 1));
+          save.hidden = !text.value.trim();
+          tagButton.hidden = !text.value.trim() || !chatTags.length;
           assistant.content = response_options.map((item, itemIndex) => `${itemIndex + 1}. ${item.text}`).join('\n\n');
           scheduleMessageEditSave(assistant);
         });
@@ -252,7 +299,7 @@ import { supabase, CHAT_FUNCTION_NAME } from './supabase.js';
           }
           card.append(tags);
         }
-        card.append(text);
+        card.append(text, tagChoices, actions);
         grid.append(card);
       });
       row.append(grid);
@@ -303,7 +350,7 @@ import { supabase, CHAT_FUNCTION_NAME } from './supabase.js';
 
   async function loadAutocompleteData() {
     const [tagResult, trackResult] = await Promise.all([
-      supabase.from('user_tags').select('name').order('name'),
+      supabase.from('user_tags').select('id,name').order('name'),
       supabase.from('word_tracks').select('title,content').order('title')
     ]);
     if (tagResult.error) throw tagResult.error;

@@ -9,8 +9,7 @@ const onboardingCard = document.getElementById('onboarding-card');
 
 const modelNames = {
   'gpt-6-luna': 'GPT-6 Luna',
-  'gpt-6.1-sol': 'GPT-6.1 Sol',
-  'gpt-6-astra': 'GPT-6 Astra'
+  'gpt-6.1-sol': 'GPT-6 Terra'
 };
 const formatNumber = value => Number(value || 0).toLocaleString();
 const dateKey = date => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;

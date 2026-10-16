@@ -1,7 +1,6 @@
 export const models = [
   { id: "gpt-6-luna", name: "GPT-6 Luna", description: "Fast, efficient replies", context_window: 1_050_000 },
-  { id: "gpt-6.1-sol", name: "GPT-6.1 Sol", description: "Balanced quality and speed", context_window: 1_050_000 },
-  { id: "gpt-6-astra", name: "GPT-6 Astra", description: "Detailed reasoning", context_window: 1_050_000 },
+  { id: "gpt-6.1-sol", name: "GPT-6 Terra", description: "Balanced quality and speed", context_window: 1_050_000 },
 ];
 
 export type Track = { id: string; title: string; content: string; tags: string[] };
